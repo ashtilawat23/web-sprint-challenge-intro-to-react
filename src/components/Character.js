@@ -46,8 +46,6 @@ const Character = (props) => {
     const [homeworld, setHomeworld] = useState("");
 
     useEffect(() => {
-        // the character's homeworld and species are stored as API calls
-        // so call them and store the results
         if(character.homeworld !== ""){
             axios.get(character.homeworld)
             .then(result => setHomeworld(result.data.name)) // store the name of the planet
@@ -58,10 +56,10 @@ const Character = (props) => {
             .then(result => setSpecies(result.data.name)) // store the name of the species
             .catch(error => console.log(error))
         }
-        else{ // for some reason, human characters have no species set in the API
+        else{ 
             setSpecies("human");
         }
-    }, []); // only on initialization
+    }, []); 
 
     return(
         <StyledCharacter>
